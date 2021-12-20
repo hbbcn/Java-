@@ -1,0 +1,16 @@
+html:
+	1.格式化代码 ctrl + alt + L
+	2.注释：ctrl + /
+	3.IDEA构造器快捷键　alt+insert
+	4.try-catch快捷键方法 alt + ctrl + t
+	5. 查看类或接口的继承关系: ctrl + h
+	6.重写父类方法：ctrl + o
+	7.ctrl+r查找替换
+	8.ctrl+shift+r根据目录来替换
+	9.ctrl+prtscn截取窗口
+	10.谷歌浏览器清除缓存的快捷键 ctrl_shift+delete
+	11.ctrl+o重写父类的方法
+	12.Fn+ESC:可以使F5变成刷新健
+	13.ctrl+shift+ESC可以打开任务资源管理器
+	14.ctrl+shift+n根据类名查找类
+

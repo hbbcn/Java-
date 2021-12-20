@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.itcast.mapper.OperationLogMapper" >
+
+    <insert id="insert" parameterType="operationLog">
+        INSERT INTO operation_log(id,return_value,return_class,operate_user,operate_time,param_and_value,operate_class,operate_method,cost_time)
+		VALUES(NULL,#{returnValue},#{returnClass},#{operateUser},#{operateTime},#{paramAndValue},#{operateClass},#{operateMethod},#{costTime})
+    </insert>
+
+
+    <select id="selectListByCondition" parameterType="map" resultType="operationLog">
+      select
+        id ,
+        operate_class as operateClass ,
+        operate_method as operateMethod,
+        return_class as returnClass,
+        operate_user as operateUser,
+        operate_time as operateTime,
+        param_and_value as paramAndValue,
+        cost_time as costTime,
+        return_value as returnValue
+      from operation_log
+      <where>
+        <include refid="oplog_where"/>
+      </where>
+      order by  operate_time desc
+      limit #{start},#{size}
+    </select>
+
+
+    <select id="countByCondition" resultType="long" parameterType="map">
+        select count(*) from operation_log
+        <where>
+          <include refid="oplog_where"/>
+        </where>
+    </select>
+	
+	
+    <sql id="oplog_where">
+        <if test="operateUser != null and operateUser != '' ">
+            and operate_user = #{operateUser}
+        </if>
+        <if test="operateMethod != null and operateMethod != '' ">
+            and operate_method = #{operateMethod}
+        </if>
+        <if test="returnClass != null and returnClass != '' ">
+            and return_class = #{returnClass}
+        </if>
+        <if test="costTime != null and costTime != '' ">
+            and cost_time = #{costTime}
+        </if>
+    </sql>
+
+</mapper>
